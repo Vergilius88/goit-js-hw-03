@@ -2,12 +2,16 @@
 
 const findBestEmployee = function (object) {
   const keys = Object.keys(object);
-  let value = 0; 
+  let value = { name: name, productivity: 0 };
   
-  for (const key of keys) if (object[key] > value) value = object[key];
-  return value; 
+  for (const key of keys) {
+    if (object[key] > value.productivity) {
+      value.productivity = object[key];
+      value.name = key;
+    }
+  }
+  return value.name;
 };
-
 
 console.log(
   findBestEmployee({
@@ -16,7 +20,7 @@ console.log(
     helen: 1,
     lorence: 99,
   })
-); 
+);
 
 console.log(
   findBestEmployee({
@@ -24,7 +28,7 @@ console.log(
     mango: 17,
     ajax: 4,
   })
-); 
+);
 
 console.log(
   findBestEmployee({
